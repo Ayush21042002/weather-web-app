@@ -18,13 +18,13 @@ app.get("/weather/:city",(req,res) => {
 
          response.on("data"  , (data)=>{
              const weatherData = JSON.parse(data) ;
-             console.log(weatherData);
+            //  console.log(weatherData);
 
              // send icon uri/url
              
              const weatherObject = {
                 iconurl:"http://openweathermap.org/img/w/" +weatherData.weather[0].icon + ".png",
-                temp: Number(weatherData.main.temp)-273,
+                temp: (Number(weatherData.main.temp)-273).toFixed(2),
                 windSpeed:weatherData.wind.speed,
                 pressure:weatherData.main.pressure,
                 humid:weatherData.main.humidity,
@@ -32,7 +32,7 @@ app.get("/weather/:city",(req,res) => {
                 city:weatherData.name
              };
               
-             res.send(weatherObject);
+             res.status(200).send(weatherObject);
          } )
          
     } )

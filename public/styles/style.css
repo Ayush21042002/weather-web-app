@@ -88,6 +88,10 @@ header{
     padding: 16px;
 }
 
+.card-body {
+    display: none;
+}
+
 .card .card-body .data{
     padding: 20px;
 }
