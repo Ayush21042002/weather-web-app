@@ -40,5 +40,5 @@ app.get("/weather/:city",(req,res) => {
 });
 
 
-const port = 3000 || process.env.PORT;
-app.listen(port,console.log("Server running on port " + port));
+const port = process.env.PORT || 3000;
+app.listen(port,() => console.log(`Weather app listening on port ${port}!`));
