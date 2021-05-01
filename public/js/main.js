@@ -21,6 +21,7 @@ window.onload = async() => {
         // console.log(json);
         
         document.querySelector('.card-body').style = "display:block;";
+        imageSearch(city);
     }
 };
 
@@ -57,13 +58,13 @@ function imageSearch(name) {
     
     $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
     {
-        tags: name + " landscape",
+        tags: name,
         tagmode: "any",
         format: "json"
     },
     function(data) {
         var rnd = Math.floor(Math.random() * data.items.length);
-
+        console.log(data);
         var image_src = data.items[rnd]['media']['m'].replace("_m", "_b");
 
         $('body').css('background-image', "url('" + image_src + "')");
