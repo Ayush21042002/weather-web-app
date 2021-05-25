@@ -5,13 +5,15 @@ const https = require("https") ;
 
 const app = express();
 
+require('dotenv').config();
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.json());
 
 app.get("/weather/:city",(req,res) => {
     var city = req.params.city;
-    const appid = "33d92e56156fee541dac0c7b78ad2285" ;
+    const appid =  process.env.APPID;
     url  =  "https://api.openweathermap.org/data/2.5/weather?q="+city +"&appid="+appid ;
     // fetch weather from openweather
     https.get(url, (response) =>{
